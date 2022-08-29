@@ -21,11 +21,18 @@ jobs:
       - name: Build Apk 🧱📱
         run: flutter build apk
         
-      - name: Upload Apk ️⬆️📱
+      - name: Deploy Apk ️🚀📱
         uses: actions/upload-artifact@v1
         with:
           name: release-apk
           path: build/app/outputs/apk/release/app-release.apk
+          
+          
       - name: Build Web 🧱🌐
-        run: flutter build web
+        run: flutter build web --base-href "/japanese_character_writing/"
+        
+      - name: Deploy Web 🚀🌐
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build/web
       
